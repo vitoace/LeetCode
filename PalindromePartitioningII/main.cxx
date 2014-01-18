@@ -3,38 +3,25 @@
 class Solution {
 public:
   int minCut(string s) {
-    const int n = s.size();
-    int minCutTable[n][n];
-    bool minCutPalTable[n][n];
-    
-    // initialize table
-    int i;
-    for (i = 0; i < n; ++i) {
-      minCutPalTable[i][i] = true;
-      minCutTable[i][i] = 0;
-    }
-    
-    for (int l = 2; l <= n; l++) {
-      for (i = 0; i<n-l+1; i++) {
-
-	int j = i+l-1;
-	
-	if ( l == 2)
-	  minCutPalTable[i][j] = (s[i] == s[j]);
-	else
-	  minCutPalTable[i][j] = (s[i] == s[j] && minCutPalTable[i+1][j-1]);
-	
-	if (minCutPalTable[i][j]) {
-	  minCutTable[i][j] = 0;
-	}
-	else {
-	  minCutTable[i][j] = n+1;
-	  for (int k = i; k <= j-1; ++k) {
-	    minCutTable[i][j] = min(minCutTable[i][j], minCutTable[i][k]+minCutTable[k+1][j]+1);
-	  }
-	}
+    int len = s.size();
+    int minCut[len+1];
+    bool palTable[len][len];
+        
+    for (int i = 0; i <= len; i++)
+      minCut[i] = len - i - 1;
+            
+    for (int i = 0; i < len; i++)
+      for (int j = 0; j < len; j++)
+	palTable[i][j] = false;
+        
+    for (int i = len; i >= 0; i--)
+      for (int j = i; j < len; j++) {
+	if (s[i] == s[j] && (j-i < 2 || palTable[i+1][j-1])) {
+	  palTable[i][j] = true;
+	  minCut[i] = min(minCut[i], minCut[j+1]+1);
+	} 
       }
-    }
-    return minCutTable[0][n-1];
+        
+    return minCut[0];
   }
 }
