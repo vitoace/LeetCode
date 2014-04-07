@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+int candy(vector<int> &ratings);
+int main() {
+  return 0;
+}
+
+int candy(vector<int> &ratings) {
+  if (ratings.size() == 0)
+    return 0;
+  int min = 1;
+  int count = 0;
+  int p = ratings[0];
+  vecotr<int> candies;
+  for (int i = 1; i < ratings.size(); i++) {
+    if (ratings[i] > p) {
+      count++;
+      p = ratings[i];
+      candies.push_back(count);        
+    }
+    else {
+      count = 1;
+      p = ratings[i];
+      candies.push_back(count);
+    }
+  }
+        
+  for (int i = ratings.size() - 1; i >= 0; i--) {
+            
+  }
+        
+  return min;
+}
