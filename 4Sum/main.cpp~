@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+vector<vector<int> > fourSum(vector<int> &num, int target);
+int main() {
+  return 0;
+}
+
+vector<vector<int> > fourSum(vector<int> &num, int target) {
+  std::sort(num.begin(), num.end());
+  vector<vector<int> > res;
+  if (num.size() < 4)
+    return res;
+        
+  for (int i = 0; i < num.size()-3; i++) {
+    vector<int> temp;             
+    int residual = target - num[i];
+    if (residual < 0)
+      break;
+    temp.push_back(num[i]);
+    for (int j = i+1; j < num.size()-2; j++) {
+      residual -= num[j];
+      if (residual < 0)
+	break;
+      temp.push_back(num[j]);
+      for (int k = j+1; k < num.size()-1; k++) {
+	residual -= num[k];
+	if (residual <= 0)
+	  break;
+	temp.push_back(num[k]);
+	for (int ii = k+1; ii < num.size(); ii++) {
+	  residual -= num[ii];
+	  if (target == 0) {
+	    temp.push_back(num[ii]);
+	    res.push_back(temp);
+	    break;
+	  }
+	}
+	temp.pop_back();
+      }   
+      temp.pop_back();
+    }
+    temp.pop_back();
+  }
+  return res;
+}
