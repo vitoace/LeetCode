@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  return 0;
+}
+
+int firstMissingPositive(int A[], int n) {
+  int i = 0;
+  while (i < n) {
+    if (A[i] != i && A[i] >0 && A[i] < n) {
+      swap(A[i], A[A[i]]);
+    }
+  }
+}
