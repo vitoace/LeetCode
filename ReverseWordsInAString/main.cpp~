@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+void reverseWords(string &s);
+int main() {
+  return 0;
+}
+
+void reverseWords(string &s) {
+  int l = s.size();
+  while (l >= 0) {
+    if (s[l] == ' ') {
+      l--;
+      s = s.substr(0, s.size()-1);
+      continue;
+    }
+            
+    string temp = ""; 
+    while(s[l] != ' ') {
+      temp = s[l] + temp;
+      l--;
+    }
+    s = temp + s.substr(0, s.size()-temp.size())
+      }
+}
