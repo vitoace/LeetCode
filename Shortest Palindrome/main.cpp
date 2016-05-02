@@ -12,13 +12,20 @@ public:
     size_t l = p.size();
     vector<int> next(l, 0);
     for (size_t i = 1; i < l; i++) {
-      int j = p[i-1];
-      if (j > 0 && p[i] != p[j]) j = p[j-1];
-      p[i] = (j + (p[i] == p[j]));
+      int j = next[i-1];
+      if (j > 0 && next[i] != next[j]) j = next[j-1];
+      next[i] = (j + (next[i] == next[j]));
     }
-    return reverse.substr(0, s.size() - p[l-1]) + s;
+    printVector(next);
+    return reverse.substr(0, s.size() - next[l-1]) + s;
   }
 
+  void printVector(const vector<int>& v) {
+    for (int i = 0; i < v.size(); i++) {
+      cout << v[i] << ' ';
+    }
+    cout << endl;
+  }
 
 };
 
