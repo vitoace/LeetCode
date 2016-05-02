@@ -1,5 +1,5 @@
 Moore Voting
-Hint 1: there could only be 2 numbers that satified the condition.
+Hint: there could only be 2 numbers that satified the condition.
 1. A counter for each possible candidate.
 2. Increase the counter if the number matches.Otherwise, decrease both
 3. Go through array one more time to check if greater then floor(n/3)
