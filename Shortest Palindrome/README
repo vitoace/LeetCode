@@ -1,0 +1,3 @@
+Thought process:
+1. reverse string then append it after the orginal string followed by a special character.
+2. Use KMP algorithm
