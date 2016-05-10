@@ -14,10 +14,8 @@ vector<Interval> merge(vector<Interval> &intervals);
 int main() {
   vector<Interval> test;
   Interval temp1(1,4);
-  Interval temp2(0,2);
-  Interval temp3(3,5);
+  Interval temp3(1,4);
   test.push_back(temp1);
-  test.push_back(temp2);
   test.push_back(temp3);  
   vector<Interval> res = merge(test);
   
@@ -77,9 +75,6 @@ vector<Interval> merge(vector<Interval> &intervals) {
   //sort Intervals based on start
   //intervals = mergeSort(intervals);
   std::sort(intervals.begin(), intervals.end(), myFun);
-  for (int i = 0; i < intervals.size(); i++)
-    cout << '[' << intervals[i].start << ", " << intervals[i].end << "] ";
-  cout << endl;
   vector<Interval> res;
 
   Interval a = intervals[0];

@@ -36,11 +36,8 @@ void permuteHelper(vector<vector<int> >& res, vector<int> nums, vector<int> temp
 
 vector<vector<int> > permute(vector<int> &nums) {
   vector<vector<int> > res;
-  vector<bool> isVisted;
+  vector<bool> isVisted(nums.size(), false);
   vector<int> temp;
-  for(int i = 0; i < nums.size(); i++) {
-    isVisted.push_back(false);
-  }
   permuteHelper(res, nums, temp, isVisted);
   return res;
 }

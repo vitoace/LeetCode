@@ -18,25 +18,26 @@ int main() {
 }
 
 ListNode *detectCycle(ListNode *head) {
-  if (head == 0 || 0 == head->next)
-    return 0;
-  if (head == head->next)
-    return head;
-  ListNode *fast = head, *slow = head;
-  int k = 0;
-  bool flag = true;
-  while (fast != slow || flag) {
-    flag = false;
-    if (fast == 0 || fast->next == 0)
+    if (head == 0 || 0 == head->next)
       return 0;
-    k++;    
-    fast = fast->next->next;
-    slow = slow->next;
-  }
-        
-  while (k != 0) {
-    k--;
-    slow = slow->next;
-  }
-  return slow;
+    if (head == head->next)
+      return head;
+    ListNode *fast = head, *slow = head;
+    int k = 0;
+    bool flag = true;
+    while (fast != slow || flag) {
+      flag = false;
+      if (fast == 0 || fast->next == 0)
+	return 0;
+      k++;
+      fast = fast->next->next;
+      slow = slow->next;
+    }
+
+    while (k != 0) {
+      k--;
+      slow = slow->next;
+    }
+    return slow;
+  }  return slow;
 }
