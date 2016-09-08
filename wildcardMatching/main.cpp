@@ -5,7 +5,6 @@ using namespace std;
 bool isMatch(const char *s, const char *p);
 bool isMatch_final(const char *s, const char *p);
 int main() {
-  // insert your code here
   const char* s = "aadklfjdldlkfj";
   const char* p = "a*j?l";  
   cout << isMatch(s, p) << endl;
